@@ -96,11 +96,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
         {/* Lower Row: Identity & Navigation */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-6 border-t border-[#1C1C1F]">
           <div className="flex items-center gap-3">
-            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#FB923C] to-[#F59E0B] p-0.5 flex items-center justify-center shadow-md">
-              <span className="font-kanit font-black text-black text-xs">M</span>
+            <div className="w-8 h-8 rounded-xl overflow-hidden border border-amber-500/30 shadow-[0_0_15px_rgba(245,158,11,0.2)] flex items-center justify-center bg-black">
+              <img
+                src="/logo.jpg"
+                alt="MOGLIACH Logo"
+                className="w-full h-full object-cover"
+              />
             </div>
-            <span className="font-kanit font-bold text-white tracking-tight text-base">
-              Moglieswar
+            <span className="font-kanit font-black text-white tracking-tight text-base">
+              MOGLIESWAR
             </span>
             <span className="text-xs text-[#646973] font-mono hidden sm:inline">&bull; 2026</span>
           </div>

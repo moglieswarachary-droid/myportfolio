@@ -58,10 +58,11 @@ export interface CertificationItem {
 
 export const PORTFOLIO_DATA = {
   identity: {
-    name: "M. Moglieswar Achari",
-    shortName: "Moglieswar",
+    name: "MOGLIESWAR",
+    shortName: "MOGLIESWAR",
     fullName: "M. MOGLIESWAR ACHARI",
-    greeting: "Hi, I'm M. Moglieswar Achari",
+    greeting: "Hi, I'm MOGLIESWAR",
+    logoUrl: "/logo.jpg",
     role: "CSE (AI & ML) | Software Developer | AI/ML & Full-Stack Project Builder",
     headline: "CSE (AI & ML) | SOFTWARE DEVELOPER | AI/ML & FULL-STACK PROJECT BUILDER",
     location: "Kuppam, Andhra Pradesh, India",

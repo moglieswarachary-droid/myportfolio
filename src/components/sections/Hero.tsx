@@ -58,11 +58,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal, onOpenResume }) => {
             href="#"
             className="flex items-center gap-2.5 group no-underline text-[#D7E2EA] hover:text-white"
           >
-            <div className="w-7 h-7 rounded-lg bg-[#18191E] border border-white/[0.08] flex items-center justify-center group-hover:border-amber-500/40 transition-colors">
-              <span className="font-kanit font-black text-amber-400 text-xs">M</span>
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl overflow-hidden border border-amber-500/30 group-hover:border-amber-400/80 shadow-[0_0_15px_rgba(245,158,11,0.25)] transition-all flex items-center justify-center bg-black">
+              <img
+                src="/logo.jpg"
+                alt="MOGLIACH Logo"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+              />
             </div>
-            <span className="font-kanit font-semibold tracking-tight text-sm sm:text-base text-white">
-              Moglieswar
+            <span className="font-kanit font-black tracking-tight text-sm sm:text-base text-white group-hover:text-amber-400 transition-colors">
+              MOGLIESWAR
             </span>
           </a>
 
@@ -221,10 +225,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal, onOpenResume }) => {
             {/* Ambient Lens Flare Background Glow */}
             <div className="absolute -left-10 top-1/2 -translate-y-1/2 w-96 h-28 bg-amber-500/10 blur-3xl pointer-events-none -z-10" />
 
-            <h1 className="text-3xl sm:text-5xl md:text-6xl xl:text-7xl font-black tracking-tight text-white font-kanit leading-[1.02]">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl xl:text-8xl font-black tracking-tight text-white font-kanit leading-[0.98]">
               Hi, I'm{' '}
-              <span className="gold-chrome-gradient drop-shadow-[0_0_25px_rgba(245,158,11,0.35)]">
-                M. Moglieswar Achari
+              <span className="gold-chrome-gradient drop-shadow-[0_0_30px_rgba(245,158,11,0.4)]">
+                MOGLIESWAR
               </span>
             </h1>
 

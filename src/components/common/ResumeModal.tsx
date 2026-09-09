@@ -55,8 +55,12 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-[#22242B] bg-[#14161C]/90">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-amber-400 to-amber-500 flex items-center justify-center text-black font-bold font-kanit">
-                  M
+                <div className="w-8 h-8 rounded-xl overflow-hidden border border-amber-500/30 flex items-center justify-center bg-black">
+                  <img
+                    src="/logo.jpg"
+                    alt="MOGLIACH Logo"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div>
                   <h2 id="resume-modal-title" className="text-sm sm:text-base font-bold text-white font-kanit tracking-wide">
