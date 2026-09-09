@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PORTFOLIO_DATA } from '../../data/portfolioData';
-import { Terminal, ArrowUp, FileDown } from 'lucide-react';
+import { Terminal, ArrowUp, FileDown, Mail } from 'lucide-react';
 import { LinkedinIcon } from './Icons';
 import { MagneticButton } from './MagneticButton';
 import { cinematicSound } from '../../utils/cinematicSound';
@@ -35,7 +35,7 @@ export const FloatingQuickDock: React.FC<FloatingQuickDockProps> = ({ onOpenTerm
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 30, scale: 0.9 }}
           transition={{ duration: 0.25 }}
-          className="fixed bottom-6 right-6 z-40 flex items-center gap-2 p-1.5 rounded-full bg-[#151518]/90 backdrop-blur-xl border border-[#27272A] shadow-[0_10px_30px_rgba(0,0,0,0.85)]"
+          className="fixed bottom-[calc(1.25rem+env(safe-area-inset-bottom,0px))] right-4 sm:right-6 z-40 flex items-center gap-1.5 sm:gap-2 p-1.5 rounded-full bg-[#151518]/90 backdrop-blur-xl border border-[#27272A] shadow-[0_10px_30px_rgba(0,0,0,0.85)]"
         >
           {/* Quick Resume Link */}
           <MagneticButton strength={0.25}>
@@ -62,6 +62,18 @@ export const FloatingQuickDock: React.FC<FloatingQuickDockProps> = ({ onOpenTerm
               title="LinkedIn Profile"
             >
               <LinkedinIcon className="w-3.5 h-3.5" />
+            </a>
+          </MagneticButton>
+
+          {/* Quick Email Link */}
+          <MagneticButton strength={0.3}>
+            <a
+              href={`mailto:${PORTFOLIO_DATA.identity.email}`}
+              onMouseEnter={() => cinematicSound.playMechanicalClick()}
+              className="p-2 block rounded-full bg-[#202025] hover:bg-[#282830] text-[#8B949E] hover:text-amber-400 transition-colors border border-[#33333C]"
+              title={`Email: ${PORTFOLIO_DATA.identity.email}`}
+            >
+              <Mail className="w-3.5 h-3.5" />
             </a>
           </MagneticButton>
 

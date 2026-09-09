@@ -78,6 +78,11 @@ export const AmberNeuralGrid: React.FC<AmberNeuralGridProps> = ({ grainLevel = 1
     let animId: number;
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
+    let isRunning = true;
+
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const handleResize = () => {
       if (!canvas) return;
@@ -102,15 +107,31 @@ export const AmberNeuralGrid: React.FC<AmberNeuralGridProps> = ({ grainLevel = 1
       scrollOffsetY = window.scrollY || 0;
     };
 
-    window.addEventListener('resize', handleResize);
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    document.addEventListener('mouseleave', handleMouseLeave);
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        isRunning = false;
+        cancelAnimationFrame(animId);
+      } else {
+        if (!isRunning && !prefersReducedMotion) {
+          isRunning = true;
+          animId = requestAnimationFrame(render);
+        }
+      }
+    };
 
-    // Neural Network Nodes
-    const isMobile = width < 768;
-    const nodeCount = isMobile ? 18 : 34;
-    const maxConnectionDistance = isMobile ? 140 : 190;
+    window.addEventListener('resize', handleResize, { passive: true });
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    document.addEventListener('mouseleave', handleMouseLeave, { passive: true });
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    // Adaptive Neural Network Nodes based on device performance
+    const isTouchOrMobile =
+      width < 768 ||
+      (typeof window !== 'undefined' && !window.matchMedia('(pointer: fine)').matches) ||
+      (typeof navigator !== 'undefined' && (navigator.hardwareConcurrency || 4) <= 4);
+    const nodeCount = isTouchOrMobile ? 12 : 32;
+    const maxConnectionDistance = isTouchOrMobile ? 120 : 180;
 
     const nodes: Node[] = [];
     for (let i = 0; i < nodeCount; i++) {
@@ -126,7 +147,7 @@ export const AmberNeuralGrid: React.FC<AmberNeuralGridProps> = ({ grainLevel = 1
 
     // Ambient Quantum Stardust Embers (Floating Micro-Particles)
     const embers: StardustEmber[] = [];
-    const emberCount = isMobile ? 24 : 50;
+    const emberCount = isTouchOrMobile ? 16 : 46;
     for (let e = 0; e < emberCount; e++) {
       const isCyan = Math.random() > 0.65;
       embers.push({
@@ -472,17 +493,21 @@ export const AmberNeuralGrid: React.FC<AmberNeuralGridProps> = ({ grainLevel = 1
       }
 
       ctx.globalAlpha = 1;
-      animId = requestAnimationFrame(render);
+      if (isRunning && !prefersReducedMotion) {
+        animId = requestAnimationFrame(render);
+      }
     };
 
     render();
 
     return () => {
+      isRunning = false;
       cancelAnimationFrame(animId);
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('click', handleClick);
     };
   }, []);

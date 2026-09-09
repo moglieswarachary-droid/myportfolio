@@ -22,6 +22,7 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
+    if (typeof window !== 'undefined' && !window.matchMedia('(pointer: fine)').matches) return;
     const rect = cardRef.current.getBoundingClientRect();
     setPosition({
       x: e.clientX - rect.left,

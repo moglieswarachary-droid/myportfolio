@@ -19,7 +19,7 @@ export const Services: React.FC = () => {
   return (
     <section
       id="services"
-      className="relative bg-transparent text-[#D7E2EA] pt-20 sm:pt-28 pb-20 px-5 sm:px-8 md:px-12 border-t border-[#1C1C1F] overflow-hidden"
+      className="section-visibility-auto relative bg-transparent text-[#D7E2EA] pt-20 sm:pt-28 pb-20 px-5 sm:px-8 md:px-12 border-t border-[#1C1C1F] overflow-hidden"
     >
       {/* Ambient background volumetric glow */}
       <div className="absolute top-1/4 -left-20 w-[500px] h-[350px] bg-cyan-500/5 rounded-full blur-[160px] pointer-events-none -z-10" />

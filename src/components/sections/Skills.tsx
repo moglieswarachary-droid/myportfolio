@@ -44,7 +44,7 @@ export const Skills: React.FC = () => {
   return (
     <section
       id="skills"
-      className="relative bg-transparent text-[#D7E2EA] py-16 sm:py-24 px-5 sm:px-8 md:px-10 border-t border-[#1C1C1F] overflow-hidden"
+      className="section-visibility-auto relative bg-transparent text-[#D7E2EA] py-16 sm:py-24 px-5 sm:px-8 md:px-10 border-t border-[#1C1C1F] overflow-hidden"
     >
       {/* Background glow */}
       <div className="absolute top-1/3 right-10 w-96 h-96 bg-[#FB923C]/5 rounded-full blur-[140px] pointer-events-none -z-10" />

@@ -1,17 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { Hero } from './components/sections/Hero';
 import { Services } from './components/sections/Services';
 import { Projects } from './components/sections/Projects';
 import { Skills } from './components/sections/Skills';
 import { Timeline } from './components/sections/Timeline';
 import { Certifications } from './components/sections/Certifications';
-import { Terminal } from './components/sections/Terminal';
 import { Footer } from './components/sections/Footer';
 import { FloatingQuickDock } from './components/common/FloatingQuickDock';
 import { AmberNeuralGrid } from './components/common/AmberNeuralGrid';
 import { ScrollProgressBar } from './components/common/ScrollProgressBar';
 import { TechCursor } from './components/common/TechCursor';
-import { ResumeModal } from './components/common/ResumeModal';
+
+// Lazy-loaded on demand to ensure instant initial viewport rendering across all devices
+const Terminal = lazy(() =>
+  import('./components/sections/Terminal').then((m) => ({ default: m.Terminal }))
+);
+const ResumeModal = lazy(() =>
+  import('./components/common/ResumeModal').then((m) => ({ default: m.ResumeModal }))
+);
 
 export const App: React.FC = () => {
   const [terminalOpen, setTerminalOpen] = useState(false);
@@ -56,18 +62,26 @@ export const App: React.FC = () => {
       {/* 7. Footer with Connect CTA */}
       <Footer onOpenResume={() => setResumeOpen(true)} />
 
-      {/* Interactive CLI Terminal Modal (Triggered on Demand) */}
-      <Terminal
-        isModal={true}
-        isOpen={terminalOpen}
-        onClose={() => setTerminalOpen(false)}
-      />
+      {/* Interactive CLI Terminal Modal (Lazy loaded when opened) */}
+      {terminalOpen && (
+        <Suspense fallback={null}>
+          <Terminal
+            isModal={true}
+            isOpen={terminalOpen}
+            onClose={() => setTerminalOpen(false)}
+          />
+        </Suspense>
+      )}
 
-      {/* Interactive Official Resume Modal (PDF & Structured View) */}
-      <ResumeModal
-        isOpen={resumeOpen}
-        onClose={() => setResumeOpen(false)}
-      />
+      {/* Interactive Official Resume Modal (Lazy loaded when opened) */}
+      {resumeOpen && (
+        <Suspense fallback={null}>
+          <ResumeModal
+            isOpen={resumeOpen}
+            onClose={() => setResumeOpen(false)}
+          />
+        </Suspense>
+      )}
 
       {/* Floating Quick Action Dock */}
       <FloatingQuickDock

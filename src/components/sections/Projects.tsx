@@ -28,7 +28,7 @@ export const Projects: React.FC = () => {
   return (
     <section
       id="projects"
-      className="relative bg-transparent text-[#D7E2EA] pt-20 sm:pt-28 pb-24 px-4 sm:px-6 md:px-10 border-t border-[#1C1C1F]"
+      className="section-visibility-auto relative bg-transparent text-[#D7E2EA] pt-20 sm:pt-28 pb-24 px-4 sm:px-6 md:px-10 border-t border-[#1C1C1F]"
     >
       {/* Background glow */}
       <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#F59E0B]/5 rounded-full blur-[160px] pointer-events-none -z-10" />
@@ -75,7 +75,7 @@ export const Projects: React.FC = () => {
               spotlightBorderColor="rgba(245, 158, 11, 0.55)"
               spotlightRadius={620}
               onMouseEnter={() => cinematicSound.playMechanicalClick()}
-              className="sticky h-auto rounded-3xl border border-[#27272A] bg-[#0E1015]/95 p-5 sm:p-7 md:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.9)] flex flex-col justify-between transition-all duration-300 relative group/card"
+              className="static sm:sticky h-auto rounded-3xl border border-[#27272A] bg-[#0E1015]/95 p-5 sm:p-7 md:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.9)] flex flex-col justify-between transition-all duration-300 relative group/card"
             >
               {/* Viewfinder Reticle Corners */}
               <div className="hud-corner-tl opacity-30 group-hover/card:opacity-90 transition-opacity" />

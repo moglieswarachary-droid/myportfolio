@@ -24,6 +24,7 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
+    if (typeof window !== 'undefined' && !window.matchMedia('(pointer: fine)').matches) return;
     const rect = ref.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;

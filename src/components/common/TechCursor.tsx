@@ -5,7 +5,7 @@ export const TechCursor: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-  const [isTouchDevice] = useState<boolean>(() => {
+  const [isTouchDevice, setIsTouchDevice] = useState<boolean>(() => {
     if (typeof window === 'undefined') return true;
     return !window.matchMedia('(pointer: fine)').matches;
   });
@@ -20,20 +20,35 @@ export const TechCursor: React.FC = () => {
   const smoothY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
-    if (isTouchDevice) return;
+    // Detect touchscreen interaction on hybrid/tablet/laptop devices
+    const handleTouchStart = () => {
+      setIsTouchDevice(true);
+    };
+    window.addEventListener('touchstart', handleTouchStart, { passive: true, once: true });
 
+    if (isTouchDevice) {
+      return () => {
+        window.removeEventListener('touchstart', handleTouchStart);
+      };
+    }
+
+    let lastCheckTime = 0;
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
       if (!isVisible) setIsVisible(true);
 
-      // Check if hovering over clickable element
-      const target = e.target as HTMLElement | null;
-      if (target) {
-        const isInteractive = Boolean(
-          target.closest('a, button, [role="button"], input, textarea, select, [data-magnetic="true"], .cursor-pointer')
-        );
-        setIsHovered(isInteractive);
+      // Throttled check for interactive element hover (every 30ms) to reduce DOM queries
+      const now = performance.now();
+      if (now - lastCheckTime > 30) {
+        lastCheckTime = now;
+        const target = e.target as HTMLElement | null;
+        if (target) {
+          const isInteractive = Boolean(
+            target.closest('a, button, [role="button"], input, textarea, select, [data-magnetic="true"], .cursor-pointer')
+          );
+          setIsHovered(isInteractive);
+        }
       }
     };
 
@@ -42,13 +57,14 @@ export const TechCursor: React.FC = () => {
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mouseup', handleMouseUp);
-    document.addEventListener('mouseleave', handleMouseLeave);
-    document.addEventListener('mouseenter', handleMouseEnter);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.addEventListener('mousedown', handleMouseDown, { passive: true });
+    window.addEventListener('mouseup', handleMouseUp, { passive: true });
+    document.addEventListener('mouseleave', handleMouseLeave, { passive: true });
+    document.addEventListener('mouseenter', handleMouseEnter, { passive: true });
 
     return () => {
+      window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseup', handleMouseUp);

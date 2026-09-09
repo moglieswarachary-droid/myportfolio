@@ -10,7 +10,7 @@ export const Timeline: React.FC = () => {
   const educations = PORTFOLIO_DATA.education;
 
   return (
-    <section className="relative bg-transparent text-[#D7E2EA] py-16 sm:py-24 px-5 sm:px-8 md:px-10 border-t border-[#1C1C1F]">
+    <section className="section-visibility-auto relative bg-transparent text-[#D7E2EA] py-16 sm:py-24 px-5 sm:px-8 md:px-10 border-t border-[#1C1C1F]">
       <div className="max-w-7xl mx-auto space-y-16 sm:space-y-24">
         {/* ================= EXPERIENCE SECTION ================= */}
         <div id="experience">

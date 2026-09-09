@@ -17,7 +17,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
   };
 
   return (
-    <footer className="relative bg-transparent text-[#D7E2EA] pt-20 pb-14 px-6 md:px-10 lg:px-16 border-t border-[#1C1C1F] overflow-hidden">
+    <footer className="section-visibility-auto relative bg-transparent text-[#D7E2EA] pt-20 pb-14 px-6 md:px-10 lg:px-16 border-t border-[#1C1C1F] overflow-hidden">
       {/* Ambient background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#F59E0B]/5 rounded-full blur-[140px] pointer-events-none -z-10" />
 

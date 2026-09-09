@@ -31,8 +31,12 @@ export const HolographicPortrait: React.FC<HolographicPortraitProps> = ({
   const rotateX = useTransform(smoothY, [-0.5, 0.5], [18, -18]);
   const rotateY = useTransform(smoothX, [-0.5, 0.5], [-18, 18]);
 
-  // Page-wide ambient tracking when not hovering directly
+  // Page-wide ambient tracking when not hovering directly (Desktop / Pointer only)
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+    if (!isFinePointer) return;
+
     const handleGlobalMouseMove = (e: MouseEvent) => {
       if (!cardRef.current) return;
       const rect = cardRef.current.getBoundingClientRect();
@@ -52,7 +56,7 @@ export const HolographicPortrait: React.FC<HolographicPortraitProps> = ({
       }
     };
 
-    window.addEventListener('mousemove', handleGlobalMouseMove);
+    window.addEventListener('mousemove', handleGlobalMouseMove, { passive: true });
     return () => window.removeEventListener('mousemove', handleGlobalMouseMove);
   }, [rawX, rawY, glareOpacityRaw]);
 
@@ -115,10 +119,15 @@ export const HolographicPortrait: React.FC<HolographicPortraitProps> = ({
           }}
           className="relative overflow-hidden rounded-[32px] border border-amber-500/30 group-hover:border-amber-400/60 shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_35px_rgba(245,158,11,0.2)] bg-gradient-to-b from-[#16181D] to-[#0D0E11] transition-all duration-300"
         >
-          {/* Portrait Image */}
+          {/* Portrait Image (LCP Candidate) */}
           <img
             src={src}
             alt={alt}
+            width="410"
+            height="492"
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
             className="w-[280px] sm:w-[350px] md:w-[380px] lg:w-[410px] h-auto object-cover block select-none pointer-events-none"
             style={{
               maskImage: 'linear-gradient(to bottom, black 86%, transparent 100%)',

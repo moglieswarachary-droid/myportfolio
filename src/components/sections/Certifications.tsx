@@ -12,7 +12,7 @@ export const Certifications: React.FC = () => {
   return (
     <section
       id="certifications"
-      className="relative bg-transparent text-[#D7E2EA] py-16 sm:py-24 px-5 sm:px-8 md:px-10 border-t border-[#1C1C1F]"
+      className="section-visibility-auto relative bg-transparent text-[#D7E2EA] py-16 sm:py-24 px-5 sm:px-8 md:px-10 border-t border-[#1C1C1F]"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
