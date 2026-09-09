@@ -2,7 +2,8 @@ import React from 'react';
 import { PORTFOLIO_DATA } from '../../data/portfolioData';
 import { FadeIn } from '../common/FadeIn';
 import { SpotlightCard } from '../common/SpotlightCard';
-import { Layers, Cpu, Server, Smartphone, Layout, Sparkles, ArrowUpRight } from 'lucide-react';
+import { BinarySeparator } from '../common/BinarySeparator';
+import { Layers, Cpu, Server, Smartphone, Layout, ArrowUpRight } from 'lucide-react';
 import { cinematicSound } from '../../utils/cinematicSound';
 
 export const Services: React.FC = () => {
@@ -19,84 +20,90 @@ export const Services: React.FC = () => {
   return (
     <section
       id="services"
-      className="section-visibility-auto relative bg-transparent text-[#D7E2EA] pt-20 sm:pt-28 pb-20 px-5 sm:px-8 md:px-12 border-t border-[#1C1C1F] overflow-hidden"
+      className="section-visibility-auto relative bg-transparent text-[#D7E2EA] pt-16 sm:pt-24 pb-16 px-4 sm:px-6 md:px-10 overflow-hidden"
     >
-      {/* Ambient background volumetric glow */}
-      <div className="absolute top-1/4 -left-20 w-[500px] h-[350px] bg-cyan-500/5 rounded-full blur-[160px] pointer-events-none -z-10" />
-      <div className="absolute bottom-10 right-0 w-[500px] h-[350px] bg-amber-500/5 rounded-full blur-[160px] pointer-events-none -z-10" />
-
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="mb-12 sm:mb-16">
-          <FadeIn delay={0.1}>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#181818] border border-[#27272A] text-xs font-mono uppercase tracking-widest text-[#FB923C] mb-3">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Core Engineering Disciplines</span>
+        <div className="mb-8">
+          <FadeIn delay={0.05}>
+            <div className="flex items-center gap-3 text-xs font-mono tracking-widest text-amber-400 mb-2 uppercase">
+              <span>✦</span>
+              <span>ENGINEERING DISCIPLINES</span>
+              <span className="text-zinc-600">//</span>
+              <span className="text-zinc-400">ARCHITECTURAL DOMAINS</span>
             </div>
           </FadeIn>
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
-            <FadeIn delay={0.2}>
-              <h2 className="font-kanit font-black uppercase tracking-tight leading-none text-4xl sm:text-5xl md:text-6xl text-white select-none">
-                ENGINEERING DISCIPLINES
+            <FadeIn delay={0.1}>
+              <h2 className="font-syne font-extrabold uppercase tracking-widest text-4xl sm:text-6xl md:text-7xl text-white select-none">
+                D I S C I P L I N E S
               </h2>
             </FadeIn>
 
-            <FadeIn delay={0.3}>
-              <p className="text-xs sm:text-sm text-[#8B949E] max-w-md font-normal">
-                End-to-end technical execution across high-throughput server backends, modern frontend systems, and AI inference pipelines.
+            <FadeIn delay={0.15}>
+              <p className="font-mono text-xs sm:text-sm text-zinc-400 max-w-md">
+                Full-lifecycle engineering execution across distributed backends, ultra-fast client interfaces, and machine learning pipelines.
               </p>
             </FadeIn>
           </div>
         </div>
 
+        {/* Binary Separator */}
+        <div className="mb-8">
+          <BinarySeparator
+            tag="CAPABILITIES"
+            label="DISTRIBUTED SYSTEMS // CLIENT UI // ML INFERENCE"
+          />
+        </div>
+
         {/* Services Widescreen Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, idx) => (
-            <FadeIn key={service.number} delay={0.08 * idx} className="h-full">
+            <FadeIn key={service.number} delay={0.06 * idx} className="h-full">
               <SpotlightCard
                 onMouseEnter={() => cinematicSound.playMechanicalClick()}
                 spotlightColor="rgba(245, 158, 11, 0.12)"
                 spotlightBorderColor="rgba(245, 158, 11, 0.45)"
                 spotlightRadius={450}
-                className="h-full p-6 sm:p-8 rounded-3xl bg-[#101216]/90 border border-white/[0.08] shadow-[0_15px_40px_rgba(0,0,0,0.8)] flex flex-col justify-between transition-all duration-300 group hover:translate-y-[-4px]"
+                className="h-full p-6 sm:p-7 rounded-2xl bg-zinc-950/90 border border-white/10 shadow-[0_15px_40px_rgba(0,0,0,0.8)] flex flex-col justify-between transition-all duration-300 group hover:translate-y-[-4px] backdrop-blur-md"
               >
                 {/* Viewfinder Reticle Corners */}
                 <div className="hud-corner-tl opacity-40 group-hover:opacity-100 transition-opacity" />
                 <div className="hud-corner-tr opacity-40 group-hover:opacity-100 transition-opacity" />
 
                 <div>
-                  <div className="flex items-center justify-between pb-4 border-b border-white/[0.06] mb-5">
+                  <div className="flex items-center justify-between pb-4 border-b border-zinc-800 mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-xl bg-[#181A22] border border-white/[0.1] flex items-center justify-center group-hover:border-amber-500/40 transition-colors">
+                      <div className="w-8 h-8 rounded bg-zinc-900 border border-zinc-700/80 flex items-center justify-center group-hover:border-amber-400 transition-colors">
                         {serviceIcons[idx % serviceIcons.length]}
                       </div>
-                      <span className="font-telemetry font-bold text-xs text-amber-400">
+                      <span className="font-mono font-bold text-xs text-amber-400">
                         SPEC // {service.number}
                       </span>
                     </div>
 
-                    <ArrowUpRight className="w-4 h-4 text-neutral-500 group-hover:text-amber-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                    <ArrowUpRight className="w-4 h-4 text-zinc-500 group-hover:text-amber-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                   </div>
 
-                  <h3 className="font-kanit font-black text-xl sm:text-2xl text-white tracking-tight group-hover:text-amber-300 transition-colors mb-3">
+                  <h3 className="font-syne font-black text-xl sm:text-2xl text-white tracking-tight group-hover:text-amber-300 transition-colors mb-2">
                     {service.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-[#9CA3AF] leading-relaxed mb-6 font-normal">
+                  <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-6 font-sans">
                     {service.description}
                   </p>
                 </div>
 
                 {/* Tech Tags */}
-                <div className="pt-4 border-t border-white/[0.06]">
-                  <div className="flex flex-wrap gap-1.5">
+                <div className="pt-4 border-t border-zinc-800">
+                  <div className="flex flex-wrap gap-1.5 font-mono">
                     {service.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2.5 py-1 rounded-md bg-[#161820] border border-white/[0.06] text-[10px] sm:text-[11px] font-mono text-[#D7E2EA] group-hover:border-amber-500/20 group-hover:text-amber-200/90 transition-colors"
+                        className="px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-[10px] text-zinc-300 group-hover:border-amber-500/30 group-hover:text-amber-200 transition-colors"
                       >
-                        {tag}
+                        #{tag}
                       </span>
                     ))}
                   </div>
