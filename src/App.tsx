@@ -10,8 +10,6 @@ import { FloatingQuickDock } from './components/common/FloatingQuickDock';
 import { AmberNeuralGrid } from './components/common/AmberNeuralGrid';
 import { ScrollProgressBar } from './components/common/ScrollProgressBar';
 import { TechCursor } from './components/common/TechCursor';
-import { SiteFrame } from './components/common/SiteFrame';
-import { AWaves } from './components/common/AWaves';
 
 // Lazy-loaded on demand to ensure instant initial viewport rendering across all devices
 const Terminal = lazy(() =>
@@ -26,55 +24,43 @@ export const App: React.FC = () => {
   const [resumeOpen, setResumeOpen] = useState(false);
 
   useEffect(() => {
-    document.title = 'MOGLIESWAR — Creative Developer & AI Systems Architect';
+    document.title = 'M. MOGLIESWAR ACHARI | Software Developer | AI/ML & Full-Stack';
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#07080B] text-[#D7E2EA] font-sans selection:bg-amber-400 selection:text-black overflow-x-clip relative">
+    <div className="min-h-screen bg-[#07080B] text-[#D7E2EA] font-kanit selection:bg-amber-400 selection:text-black overflow-x-clip relative">
       {/* Precision Glowing Scroll Progress Bar */}
       <ScrollProgressBar />
 
       {/* Cybernetic Precision Tech Cursor (Desktop/Mouse Only) */}
       <TechCursor />
 
-      {/* Architectural Perimeter Frame & Live Telemetry Console */}
-      <SiteFrame
-        onOpenResume={() => setResumeOpen(true)}
-        onOpenTerminal={() => setTerminalOpen(true)}
-      />
-
-      {/* Parametric Undulating Wave Canvas (inspired by wodniack.dev <a-waves>) */}
-      <AWaves linesCount={7} speedMultiplier={1} />
-
-      {/* Cinematic Amber Neural Atmospheric Grid */}
+      {/* Premium Cinematic Amber Neural & Anamorphic Atmosphere */}
       <AmberNeuralGrid grainLevel={1} />
 
-      {/* Main Content Sections */}
-      <div className="relative z-10">
-        {/* 1. Hero Section (Wodniack Editorial Brutalism & Monumental Typography) */}
-        <Hero
-          onOpenTerminal={() => setTerminalOpen(true)}
-          onOpenResume={() => setResumeOpen(true)}
-        />
+      {/* 1. Hero Section (Dominant Senior Software Engineer Architecture) */}
+      <Hero
+        onOpenTerminal={() => setTerminalOpen(true)}
+        onOpenResume={() => setResumeOpen(true)}
+      />
 
-        {/* 2. Engineering Disciplines */}
-        <Services />
+      {/* 2. Engineering Disciplines & Services */}
+      <Services />
 
-        {/* 3. W O R K // Selected Case Studies */}
-        <Projects />
+      {/* 3. Featured Projects (Flagship Case Studies) */}
+      <Projects />
 
-        {/* 4. S T A C K // Core Tech Matrix & Telemetry */}
-        <Skills />
+      {/* 4. Skills (Core Tech Matrix & Telemetry) */}
+      <Skills />
 
-        {/* 5. E X P E R I E N C E & A C A D E M I C S */}
-        <Timeline />
+      {/* 5. Experience & Education Timeline */}
+      <Timeline />
 
-        {/* 6. C E R T S // Verified Qualifications */}
-        <Certifications />
+      {/* 6. Certifications & Profile Credentials */}
+      <Certifications />
 
-        {/* 7. Footer & Contact Endpoints */}
-        <Footer onOpenResume={() => setResumeOpen(true)} />
-      </div>
+      {/* 7. Footer with Connect CTA */}
+      <Footer onOpenResume={() => setResumeOpen(true)} />
 
       {/* Interactive CLI Terminal Modal (Lazy loaded when opened) */}
       {terminalOpen && (

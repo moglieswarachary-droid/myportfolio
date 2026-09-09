@@ -2,8 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { PORTFOLIO_DATA } from '../../data/portfolioData';
 import { FadeIn } from '../common/FadeIn';
 import { SpotlightCard } from '../common/SpotlightCard';
-import { BinarySeparator } from '../common/BinarySeparator';
-import { Code2, Cpu, Smartphone, Database, ShieldCheck, Terminal, Search, X } from 'lucide-react';
+import { Code2, Cpu, Smartphone, Database, ShieldCheck, Terminal, Search, X, Sparkles } from 'lucide-react';
 import { cinematicSound } from '../../utils/cinematicSound';
 
 export const Skills: React.FC = () => {
@@ -45,46 +44,44 @@ export const Skills: React.FC = () => {
   return (
     <section
       id="skills"
-      className="section-visibility-auto relative bg-transparent text-[#D7E2EA] py-16 sm:py-24 px-4 sm:px-6 md:px-10 overflow-hidden"
+      className="section-visibility-auto relative bg-transparent text-[#D7E2EA] py-16 sm:py-24 px-5 sm:px-8 md:px-10 border-t border-[#1C1C1F] overflow-hidden"
     >
       {/* Background glow */}
-      <div className="absolute top-1/3 right-10 w-96 h-96 bg-amber-500/5 rounded-full blur-[140px] pointer-events-none -z-10" />
+      <div className="absolute top-1/3 right-10 w-96 h-96 bg-[#FB923C]/5 rounded-full blur-[140px] pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="mb-8">
-          <FadeIn delay={0.05}>
-            <div className="flex items-center gap-3 text-xs font-mono tracking-widest text-amber-400 mb-2 uppercase">
-              <span>✦</span>
-              <span>TECHNICAL REPERTOIRE</span>
-              <span className="text-zinc-600">//</span>
-              <span className="text-zinc-400">CORE COMPETENCIES &amp; RUNTIMES</span>
+        <div className="mb-8 sm:mb-10">
+          <FadeIn delay={0.1}>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#181818] border border-[#27272A] text-xs font-mono uppercase tracking-widest text-[#FB923C] mb-3">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Core Tech Stack</span>
             </div>
           </FadeIn>
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
-            <FadeIn delay={0.1}>
-              <h2 className="font-syne font-extrabold uppercase tracking-widest text-4xl sm:text-6xl md:text-7xl text-white select-none">
-                S T A C K
+            <FadeIn delay={0.2}>
+              <h2 className="font-kanit font-black uppercase tracking-tight leading-none text-4xl sm:text-5xl md:text-6xl text-white select-none">
+                TECHNICAL SKILLS
               </h2>
             </FadeIn>
 
-            {/* Instant Search Bar */}
-            <FadeIn delay={0.15} className="w-full lg:w-80">
+            {/* Instant Search Bar for High Usability */}
+            <FadeIn delay={0.3} className="w-full lg:w-80">
               <div className="relative">
-                <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400" />
+                <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8B949E]" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Filter skill or tool..."
-                  className="w-full pl-10 pr-9 py-2 rounded bg-zinc-900 border border-zinc-700/80 text-xs font-mono text-white placeholder:text-zinc-500 focus:outline-none focus:border-amber-400 transition-colors"
+                  placeholder="Instant skill filter..."
+                  className="w-full pl-10 pr-9 py-2.5 rounded-full bg-[#151518] border border-[#27272A] text-xs font-mono text-white placeholder:text-[#555] focus:outline-none focus:border-[#FB923C] transition-colors"
                 />
                 {searchQuery && (
                   <button
                     type="button"
                     onClick={() => setSearchQuery('')}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#8B949E] hover:text-white"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
@@ -93,23 +90,15 @@ export const Skills: React.FC = () => {
             </FadeIn>
           </div>
 
-          <FadeIn delay={0.2}>
-            <p className="mt-3 text-sm text-zinc-400 max-w-2xl font-mono">
-              // Industry standard tools, programming languages, and frameworks applied across production repositories.
+          <FadeIn delay={0.3}>
+            <p className="mt-4 text-base sm:text-lg text-[#8B949E] max-w-2xl font-normal">
+              Tools and technologies I use to build practical digital products.
             </p>
           </FadeIn>
         </div>
 
-        {/* Binary Separator */}
-        <div className="mb-8">
-          <BinarySeparator
-            tag="TECH_TAXONOMY"
-            label="DOMAINS // FRONTEND • BACKEND • AI/ML • CLOUD"
-          />
-        </div>
-
         {/* Filter Pills */}
-        <FadeIn delay={0.25} className="mb-8">
+        <FadeIn delay={0.35} className="mb-10">
           <div className="flex flex-wrap items-center gap-2">
             <button
               type="button"
@@ -118,10 +107,10 @@ export const Skills: React.FC = () => {
                 setActiveCategory('ALL');
               }}
               onMouseEnter={() => cinematicSound.playMechanicalClick()}
-              className={`px-3.5 py-1.5 rounded text-xs font-mono font-bold uppercase tracking-wider transition-all duration-200 ${
+              className={`px-4 py-2 rounded-full text-xs font-mono font-semibold uppercase tracking-wider transition-all duration-200 ${
                 activeCategory === 'ALL'
                   ? 'bg-gradient-to-r from-amber-400 to-amber-500 text-black shadow-[0_0_15px_rgba(245,158,11,0.4)]'
-                  : 'bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-amber-500/40'
+                  : 'bg-[#151518] border border-[#27272A] text-[#8B949E] hover:text-white hover:border-amber-500/40'
               }`}
             >
               ALL DOMAINS
@@ -135,10 +124,10 @@ export const Skills: React.FC = () => {
                   setActiveCategory(cat.title);
                 }}
                 onMouseEnter={() => cinematicSound.playMechanicalClick()}
-                className={`px-3.5 py-1.5 rounded text-xs font-mono font-bold uppercase tracking-wider transition-all duration-200 ${
+                className={`px-4 py-2 rounded-full text-xs font-mono font-semibold uppercase tracking-wider transition-all duration-200 ${
                   activeCategory === cat.title
                     ? 'bg-gradient-to-r from-amber-400 to-amber-500 text-black shadow-[0_0_15px_rgba(245,158,11,0.4)]'
-                    : 'bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-amber-500/40'
+                    : 'bg-[#151518] border border-[#27272A] text-[#8B949E] hover:text-white hover:border-amber-500/40'
                 }`}
               >
                 {cat.title}
@@ -147,7 +136,7 @@ export const Skills: React.FC = () => {
           </div>
 
           {searchQuery && (
-            <div className="mt-3 text-xs font-mono text-zinc-400">
+            <div className="mt-3 text-xs font-mono text-[#8B949E]">
               Found <span className="text-amber-400 font-bold">{totalMatches}</span> matching skill{totalMatches === 1 ? '' : 's'}
             </div>
           )}
@@ -158,32 +147,32 @@ export const Skills: React.FC = () => {
           {filteredCategories.map((category, catIdx) => (
             <FadeIn
               key={category.title}
-              delay={0.06 * catIdx}
+              delay={0.08 * catIdx}
               className="h-full"
             >
               <SpotlightCard
                 spotlightColor="rgba(245, 158, 11, 0.12)"
                 spotlightBorderColor="rgba(245, 158, 11, 0.45)"
-                spotlightRadius={360}
+                spotlightRadius={380}
                 onMouseEnter={() => cinematicSound.playMechanicalClick()}
-                className="h-full p-6 rounded-2xl bg-zinc-950/90 border border-white/10 transition-all duration-300 shadow-xl flex flex-col justify-between group relative backdrop-blur-md"
+                className="h-full p-6 rounded-3xl bg-[#0E1015]/95 border border-[#27272A] transition-all duration-300 shadow-xl flex flex-col justify-between group relative"
               >
                 {/* Viewfinder Reticle Corners */}
                 <div className="hud-corner-tl opacity-30 group-hover:opacity-100 transition-opacity" />
                 <div className="hud-corner-tr opacity-30 group-hover:opacity-100 transition-opacity" />
 
                 <div>
-                  <div className="flex items-center justify-between border-b border-zinc-800 pb-4 mb-4">
+                  <div className="flex items-center justify-between border-b border-[#222] pb-4 mb-5">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded bg-zinc-900 border border-zinc-700/80 flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-lg bg-[#1D1D20] border border-[#2D2D32] flex items-center justify-center">
                         {categoryIcons[category.title] || <Code2 className="w-4 h-4 text-amber-400" />}
                       </div>
-                      <h3 className="font-syne font-bold text-base text-white">
+                      <h3 className="font-kanit font-bold text-lg text-white">
                         {category.title}
                       </h3>
                     </div>
-                    <span className="text-xs font-mono text-amber-400 font-bold">
-                      ({category.skills.length})
+                    <span className="text-xs font-telemetry text-amber-400 font-bold">
+                      0{category.skills.length}
                     </span>
                   </div>
 
@@ -195,10 +184,10 @@ export const Skills: React.FC = () => {
                         <span
                           key={sIdx}
                           onMouseEnter={() => cinematicSound.playMechanicalClick()}
-                          className={`px-2.5 py-1 rounded text-xs font-mono transition-all duration-200 cursor-default ${
+                          className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-all duration-200 cursor-default ${
                             isHighlighted
-                              ? 'bg-amber-400 text-black font-bold shadow-[0_0_12px_rgba(245,158,11,0.5)]'
-                              : 'bg-zinc-900 border border-zinc-800 text-zinc-300 group-hover:border-zinc-700 hover:!border-amber-400 hover:!text-amber-300'
+                              ? 'bg-amber-400 text-black font-bold shadow-[0_0_15px_rgba(245,158,11,0.5)]'
+                              : 'bg-[#181A22] border border-[#2A2A30] text-[#D7E2EA] group-hover:border-[#383842] hover:!border-amber-500/50 hover:!text-amber-300'
                           }`}
                         >
                           {skill}
@@ -208,10 +197,10 @@ export const Skills: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Card Footer */}
-                <div className="mt-6 pt-3 border-t border-zinc-800 flex items-center justify-between text-[10px] font-mono text-zinc-500">
-                  <span>PRODUCTION TESTED</span>
-                  <span className="text-emerald-400">● READY</span>
+                {/* Card Footer Micro Bar */}
+                <div className="mt-6 pt-4 border-t border-[#222] flex items-center justify-between text-[11px] font-mono text-[#646973]">
+                  <span>PRACTICAL &bull; PRODUCTION READY</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 </div>
               </SpotlightCard>
             </FadeIn>
