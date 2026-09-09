@@ -498,7 +498,7 @@ export const PORTFOLIO_DATA = {
     },
     {
       degree: "Intermediate",
-      field: "Kuppam Junior College, Kuppam",
+      field: "Board of Intermediate Education (MPC)",
       institution: "Kuppam Junior College, Kuppam",
       period: "2021–2023",
       score: "72.8%",
@@ -506,7 +506,7 @@ export const PORTFOLIO_DATA = {
     },
     {
       degree: "SSC",
-      field: "Narayana English Medium High School, Kuppam",
+      field: "Secondary School Certificate",
       institution: "Narayana English Medium High School, Kuppam",
       period: "2020–2021",
       score: "100%",

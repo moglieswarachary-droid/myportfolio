@@ -26,18 +26,21 @@ body {
 /* Hero Typography Gradient */
 .hero-text-gradient {
   background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .amber-gradient-text {
   background: linear-gradient(135deg, #FB923C 0%, #F59E0B 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .silver-gradient-text {
   background: linear-gradient(180deg, #FFFFFF 0%, #BBCCD7 60%, #8B949E 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -182,26 +185,6 @@ body {
    CINEMATIC ELEVATION & ANAMORPHIC DESIGN SYSTEM
    ========================================================================= */
 
-/* Cinema Scope Aspect Ratio Letterbox Bars */
-.cinema-scope-bar-top,
-.cinema-scope-bar-bottom {
-  position: fixed;
-  left: 0;
-  right: 0;
-  background-color: #050608;
-  z-index: 99995;
-  transition: height 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-  pointer-events: none;
-}
-
-.cinema-scope-bar-top {
-  top: 0;
-}
-
-.cinema-scope-bar-bottom {
-  bottom: 0;
-}
-
 /* Anamorphic Lens Flare Beam */
 @keyframes anamorphic-pan {
   0% {
@@ -254,19 +237,7 @@ body {
   animation: anamorphic-pan 12s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
-/* Cinematic Scanlines */
-.cinematic-scanlines {
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 0) 50%,
-    rgba(0, 0, 0, 0.3) 50%,
-    rgba(0, 0, 0, 0.3)
-  );
-  background-size: 100% 4px;
-}
-
-/* Cinematic Typography Enhancements */
+/* Typography Enhancements */
 .font-cinematic {
   font-family: 'Cinzel', serif;
   letter-spacing: 0.18em;
@@ -276,23 +247,17 @@ body {
   font-family: 'JetBrains Mono', monospace;
 }
 
-.tracking-cinematic {
-  letter-spacing: 0.25em;
-}
-
-.tracking-wide-cinematic {
-  letter-spacing: 0.38em;
-}
-
 /* Dual Color Metallic Gradients */
 .gold-chrome-gradient {
   background: linear-gradient(135deg, #FFF6E5 0%, #F59E0B 45%, #D97706 75%, #FFF 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .cyan-amber-gradient {
   background: linear-gradient(120deg, #38BDF8 0%, #E2E8F0 40%, #F59E0B 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -306,13 +271,13 @@ body {
   box-shadow: 0 0 50px -5px rgba(6, 182, 212, 0.3), 0 0 20px -2px rgba(6, 182, 212, 0.2);
 }
 
-/* Film Title Vignette & Card Rim */
+/* Card Rim & Glassmorphic Elevation */
 .cinematic-card {
   position: relative;
   background: linear-gradient(180deg, rgba(20, 22, 28, 0.85) 0%, rgba(10, 11, 14, 0.95) 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -324,15 +289,15 @@ body {
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
-/* Camera Aperture / HUD Crop Marks */
+/* Precision Frame Reticles */
 .hud-corner-tl {
   position: absolute;
   top: 10px;
   left: 10px;
   width: 10px;
   height: 10px;
-  border-top: 1.5px solid rgba(245, 158, 11, 0.6);
-  border-left: 1.5px solid rgba(245, 158, 11, 0.6);
+  border-top: 1px solid rgba(245, 158, 11, 0.6);
+  border-left: 1px solid rgba(245, 158, 11, 0.6);
 }
 
 .hud-corner-tr {
@@ -341,8 +306,8 @@ body {
   right: 10px;
   width: 10px;
   height: 10px;
-  border-top: 1.5px solid rgba(245, 158, 11, 0.6);
-  border-right: 1.5px solid rgba(245, 158, 11, 0.6);
+  border-top: 1px solid rgba(245, 158, 11, 0.6);
+  border-right: 1px solid rgba(245, 158, 11, 0.6);
 }
 
 .hud-corner-bl {
@@ -351,8 +316,8 @@ body {
   left: 10px;
   width: 10px;
   height: 10px;
-  border-bottom: 1.5px solid rgba(245, 158, 11, 0.6);
-  border-left: 1.5px solid rgba(245, 158, 11, 0.6);
+  border-bottom: 1px solid rgba(245, 158, 11, 0.6);
+  border-left: 1px solid rgba(245, 158, 11, 0.6);
 }
 
 .hud-corner-br {
@@ -361,6 +326,6 @@ body {
   right: 10px;
   width: 10px;
   height: 10px;
-  border-bottom: 1.5px solid rgba(245, 158, 11, 0.6);
-  border-right: 1.5px solid rgba(245, 158, 11, 0.6);
+  border-bottom: 1px solid rgba(245, 158, 11, 0.6);
+  border-right: 1px solid rgba(245, 158, 11, 0.6);
 }

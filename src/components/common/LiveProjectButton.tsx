@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Magnet } from './Magnet';
+import { MagneticButton } from './MagneticButton';
 import { ExternalLink, Layers } from 'lucide-react';
 
 interface LiveProjectButtonProps {
@@ -37,7 +37,7 @@ export const LiveProjectButton: React.FC<LiveProjectButtonProps> = ({
   );
 
   return (
-    <Magnet padding={60} strength={2.5}>
+    <MagneticButton strength={0.3}>
       {url ? (
         <a
           href={url}
@@ -50,6 +50,6 @@ export const LiveProjectButton: React.FC<LiveProjectButtonProps> = ({
       ) : (
         buttonContent
       )}
-    </Magnet>
+    </MagneticButton>
   );
 };
