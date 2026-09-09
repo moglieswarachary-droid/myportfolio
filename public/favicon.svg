@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <rect width="100" height="100" rx="24" fill="#0C0C0C" />
+  <rect x="2" y="2" width="96" height="96" rx="22" stroke="#27272A" stroke-width="2" />
+  <path d="M26 72V28L50 52L74 28V72" stroke="url(#amber-grad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="50" cy="52" r="5" fill="#FB923C" />
+  <defs>
+    <linearGradient id="amber-grad" x1="26" y1="28" x2="74" y2="72" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FB923C" />
+      <stop offset="1" stop-color="#F59E0B" />
+    </linearGradient>
+  </defs>
+</svg>
