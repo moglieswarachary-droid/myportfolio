@@ -86,6 +86,7 @@ export const Terminal: React.FC<TerminalProps> = ({
               <p><span className="text-amber-400 font-bold">certifications</span> - Verified industry certifications</p>
               <p><span className="text-amber-400 font-bold">github</span> - Direct repository &amp; code links</p>
               <p><span className="text-amber-400 font-bold">linkedin</span> - Professional profile URL</p>
+              <p><span className="text-amber-400 font-bold">contact / email</span> - Direct email &amp; connect endpoints</p>
               <p><span className="text-amber-400 font-bold">resume</span> - Download official resume PDF</p>
               <p><span className="text-amber-400 font-bold">clear</span> - Clear terminal buffer</p>
             </div>
@@ -234,6 +235,7 @@ export const Terminal: React.FC<TerminalProps> = ({
         );
         break;
 
+      case 'email':
       case 'contact':
         try {
           confetti({ particleCount: 25, spread: 50, origin: { y: 0.8 } });
@@ -241,11 +243,14 @@ export const Terminal: React.FC<TerminalProps> = ({
           // ignore
         }
         resultNode = (
-          <div className="text-xs font-mono space-y-1 py-1 text-[#BBCCD7]">
-            <p className="text-[#FB923C] font-bold">PROFESSIONAL CONNECT ENDPOINTS:</p>
+          <div className="text-xs font-mono space-y-1.5 py-1 text-[#BBCCD7]">
+            <p className="text-amber-400 font-bold">PROFESSIONAL CONTACT ENDPOINTS:</p>
+            <p>Email: <a href={`mailto:${PORTFOLIO_DATA.identity.email}`} className="text-amber-300 font-bold underline hover:text-white">{PORTFOLIO_DATA.identity.email}</a></p>
+            <p>Phone: <a href={`tel:${PORTFOLIO_DATA.identity.phone}`} className="text-white hover:underline">{PORTFOLIO_DATA.identity.phone}</a></p>
+            <p>Location: <span className="text-white">{PORTFOLIO_DATA.identity.location}</span></p>
             <p>LinkedIn: <a href={PORTFOLIO_DATA.identity.linkedin} target="_blank" rel="noopener noreferrer" className="text-white hover:underline">{PORTFOLIO_DATA.identity.linkedin}</a></p>
             <p>GitHub: <a href={PORTFOLIO_DATA.identity.github} target="_blank" rel="noopener noreferrer" className="text-white hover:underline">{PORTFOLIO_DATA.identity.github}</a></p>
-            <p>Resume: <a href={PORTFOLIO_DATA.identity.resumeUrl} download="M-Moglieswar-Resume.pdf" className="text-white hover:underline">Download PDF</a></p>
+            <p>Resume: <a href={PORTFOLIO_DATA.identity.resumeUrl} download="M-Moglieswar-Resume.pdf" className="text-amber-400 hover:underline">Download Official Resume PDF</a></p>
           </div>
         );
         break;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { PORTFOLIO_DATA } from '../../data/portfolioData';
-import { ArrowUp, FileDown, ExternalLink, Sparkles } from 'lucide-react';
+import { ArrowUp, FileDown, ExternalLink, Sparkles, Mail, Phone, MapPin } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '../common/Icons';
 import { SpotlightCard } from '../common/SpotlightCard';
 import { MagneticButton } from '../common/MagneticButton';
@@ -48,19 +48,57 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
               <p className="text-sm sm:text-base text-[#9CA3AF]">
                 Open for software engineering roles, AI/ML initiatives, and high-performance product development.
               </p>
+
+              {/* Direct Contact Endpoints */}
+              <div className="flex flex-wrap items-center gap-y-2 gap-x-4 pt-2 text-xs font-mono">
+                <a
+                  href={`mailto:${PORTFOLIO_DATA.identity.email}`}
+                  className="inline-flex items-center gap-1.5 text-amber-400 hover:text-amber-300 font-semibold hover:underline"
+                  title="Send Direct Email"
+                >
+                  <Mail className="w-3.5 h-3.5" />
+                  <span>{PORTFOLIO_DATA.identity.email}</span>
+                </a>
+                <span className="text-[#4B5563] hidden sm:inline">&bull;</span>
+                <a
+                  href={`tel:${PORTFOLIO_DATA.identity.phone}`}
+                  className="inline-flex items-center gap-1.5 text-[#D1D5DB] hover:text-white hover:underline"
+                  title="Call Phone"
+                >
+                  <Phone className="w-3.5 h-3.5 text-amber-400" />
+                  <span>{PORTFOLIO_DATA.identity.phone}</span>
+                </a>
+                <span className="text-[#4B5563] hidden sm:inline">&bull;</span>
+                <span className="inline-flex items-center gap-1.5 text-[#9CA3AF]">
+                  <MapPin className="w-3.5 h-3.5 text-amber-400" />
+                  <span>{PORTFOLIO_DATA.identity.location}</span>
+                </span>
+              </div>
             </div>
 
             {/* Direct Professional Actions */}
             <div className="flex flex-wrap items-center gap-3.5">
               <MagneticButton strength={0.3}>
                 <a
+                  href={`mailto:${PORTFOLIO_DATA.identity.email}`}
+                  onMouseEnter={() => cinematicSound.playMechanicalClick()}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-semibold text-black bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 shadow-[0_0_20px_rgba(245,158,11,0.35)] transition-all transform hover:-translate-y-0.5"
+                  title={`Email ${PORTFOLIO_DATA.identity.email}`}
+                >
+                  <Mail className="w-4 h-4 text-black" />
+                  <span>{PORTFOLIO_DATA.identity.email}</span>
+                </a>
+              </MagneticButton>
+
+              <MagneticButton strength={0.3}>
+                <a
                   href={PORTFOLIO_DATA.identity.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-semibold text-white bg-[#0A66C2] hover:bg-[#0855A1] shadow-[0_0_20px_rgba(10,102,194,0.3)] transition-all transform hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-xs sm:text-sm font-semibold text-white bg-[#0A66C2] hover:bg-[#0855A1] shadow-[0_0_20px_rgba(10,102,194,0.3)] transition-all transform hover:-translate-y-0.5"
                 >
                   <LinkedinIcon className="w-4 h-4" />
-                  <span>Connect on LinkedIn</span>
+                  <span>LinkedIn</span>
                   <ExternalLink className="w-3.5 h-3.5 opacity-80" />
                 </a>
               </MagneticButton>
@@ -73,7 +111,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
                   className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-xs sm:text-sm font-semibold text-[#D7E2EA] bg-[#18181B] border border-[#2E2E36] hover:bg-[#222226] hover:text-white transition-all transform hover:-translate-y-0.5"
                 >
                   <GithubIcon className="w-4 h-4" />
-                  <span>GitHub Repos</span>
+                  <span>GitHub</span>
                 </a>
               </MagneticButton>
 
@@ -82,10 +120,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
                   type="button"
                   onClick={onOpenResume}
                   onMouseEnter={() => cinematicSound.playMechanicalClick()}
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-xs sm:text-sm font-semibold text-black bg-gradient-to-r from-[#FB923C] to-[#F59E0B] hover:opacity-95 shadow-[0_0_20px_rgba(245,158,11,0.25)] transition-all transform hover:-translate-y-0.5 cursor-pointer"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-xs sm:text-sm font-semibold text-amber-300 bg-[#141519] border border-amber-500/30 hover:border-amber-500/60 hover:bg-[#1A1C23] shadow-sm transition-all transform hover:-translate-y-0.5 cursor-pointer"
                   title="View & Download Official Resume"
                 >
-                  <FileDown className="w-4 h-4 text-black" />
+                  <FileDown className="w-4 h-4 text-amber-400" />
                   <span>Resume</span>
                 </button>
               </MagneticButton>
@@ -95,7 +133,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
 
         {/* Lower Row: Identity & Navigation */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-6 border-t border-[#1C1C1F]">
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <div className="w-8 h-8 rounded-xl overflow-hidden border border-amber-500/30 shadow-[0_0_15px_rgba(245,158,11,0.2)] flex items-center justify-center bg-black">
               <img
                 src="/logo.jpg"
@@ -107,6 +145,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
               MOGLIESWAR
             </span>
             <span className="text-xs text-[#646973] font-mono hidden sm:inline">&bull; 2026</span>
+            <span className="text-xs text-[#646973] font-mono hidden sm:inline">&bull;</span>
+            <a
+              href={`mailto:${PORTFOLIO_DATA.identity.email}`}
+              className="text-xs text-amber-400/90 font-mono hover:text-amber-300 hover:underline"
+            >
+              {PORTFOLIO_DATA.identity.email}
+            </a>
           </div>
 
           {/* Back to top button */}

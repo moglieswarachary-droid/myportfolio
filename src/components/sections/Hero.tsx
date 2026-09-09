@@ -8,6 +8,7 @@ import {
   ArrowDown,
   FileDown,
   Terminal,
+  Mail,
 } from 'lucide-react';
 import { HolographicPortrait } from '../common/HolographicPortrait';
 import { MagneticButton } from '../common/MagneticButton';
@@ -124,6 +125,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal, onOpenResume }) => {
               </a>
             </MagneticButton>
 
+            <MagneticButton strength={0.3}>
+              <a
+                href={`mailto:${PORTFOLIO_DATA.identity.email}`}
+                className="p-2 block rounded-full bg-[#141519] border border-white/[0.08] text-[#9CA3AF] hover:text-amber-400 hover:border-amber-500/40 transition-all"
+                aria-label={`Email ${PORTFOLIO_DATA.identity.email}`}
+                title={`Email: ${PORTFOLIO_DATA.identity.email}`}
+              >
+                <Mail className="w-3.5 h-3.5" />
+              </a>
+            </MagneticButton>
+
             <MagneticButton strength={0.22}>
               <button
                 type="button"
@@ -187,6 +199,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal, onOpenResume }) => {
                   <LinkedinIcon className="w-3.5 h-3.5" />
                   <span>LinkedIn</span>
                 </a>
+                <a
+                  href={`mailto:${PORTFOLIO_DATA.identity.email}`}
+                  className="flex items-center gap-1.5 text-xs text-[#9CA3AF] hover:text-amber-400"
+                >
+                  <Mail className="w-3.5 h-3.5" />
+                  <span>Email</span>
+                </a>
                 <button
                   type="button"
                   onClick={() => {
@@ -213,11 +232,23 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal, onOpenResume }) => {
           transition={{ duration: 0.75, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           className="lg:col-span-7 flex flex-col items-start text-left space-y-6"
         >
-          {/* Availability Status Badge */}
-          <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-[#131418] border border-white/[0.08] shadow-sm text-xs font-mono text-[#D1D5DB]">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
-            <span className="text-emerald-400 font-medium">Available for Developer Roles</span>
-            <span className="text-[#646973] hidden sm:inline">&bull; 2026</span>
+          {/* Availability Status & Contact Badge */}
+          <div className="flex flex-wrap items-center gap-2.5">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#131418] border border-white/[0.08] shadow-sm text-xs font-mono text-[#D1D5DB]">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
+              <span className="text-emerald-400 font-medium">Available for Developer Roles</span>
+              <span className="text-[#646973] hidden sm:inline">&bull; 2026</span>
+            </div>
+
+            <a
+              href={`mailto:${PORTFOLIO_DATA.identity.email}`}
+              onMouseEnter={() => cinematicSound.playMechanicalClick()}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-xs font-mono text-amber-300 hover:bg-amber-500/20 hover:border-amber-400 hover:text-white transition-all shadow-sm group"
+              title={`Direct Email: ${PORTFOLIO_DATA.identity.email}`}
+            >
+              <Mail className="w-3.5 h-3.5 text-amber-400 group-hover:scale-110 transition-transform" />
+              <span>{PORTFOLIO_DATA.identity.email}</span>
+            </a>
           </div>
 
           {/* Dominant Headline */}
@@ -271,6 +302,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal, onOpenResume }) => {
             </MagneticButton>
 
             <MagneticButton strength={0.24}>
+              <a
+                href={`mailto:${PORTFOLIO_DATA.identity.email}`}
+                onMouseEnter={() => cinematicSound.playMechanicalClick()}
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 hover:text-white text-xs sm:text-sm font-semibold tracking-wide transition-all shadow-sm"
+                title={`Send direct email to ${PORTFOLIO_DATA.identity.email}`}
+              >
+                <Mail className="w-4 h-4 text-amber-400" />
+                <span>Contact Email</span>
+              </a>
+            </MagneticButton>
+
+            <MagneticButton strength={0.24}>
               <button
                 type="button"
                 onClick={onOpenResume}
@@ -305,6 +348,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal, onOpenResume }) => {
                   title="LinkedIn Profile"
                 >
                   <LinkedinIcon className="w-4 h-4" />
+                </a>
+              </MagneticButton>
+
+              <MagneticButton strength={0.32}>
+                <a
+                  href={`mailto:${PORTFOLIO_DATA.identity.email}`}
+                  className="p-2.5 block rounded-full bg-[#131418] border border-white/[0.08] text-[#9CA3AF] hover:text-amber-400 hover:border-amber-500/40 hover:bg-[#1A1B20] transition-all"
+                  title={`Email ${PORTFOLIO_DATA.identity.email}`}
+                >
+                  <Mail className="w-4 h-4" />
                 </a>
               </MagneticButton>
             </div>

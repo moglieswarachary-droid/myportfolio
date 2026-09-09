@@ -174,15 +174,15 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                         Kuppam, Andhra Pradesh, India
                       </span>
                       <span>&bull;</span>
-                      <span className="flex items-center gap-1">
+                      <a href="tel:+917799885487" className="flex items-center gap-1 text-[#9CA3AF] hover:text-white hover:underline">
                         <Phone className="w-3.5 h-3.5 text-amber-400" />
                         +91 7799885487
-                      </span>
+                      </a>
                       <span>&bull;</span>
-                      <span className="flex items-center gap-1">
+                      <a href="mailto:moglieswar999@gmail.com" className="flex items-center gap-1 text-amber-400 font-bold hover:underline">
                         <Mail className="w-3.5 h-3.5 text-amber-400" />
                         moglieswar999@gmail.com
-                      </span>
+                      </a>
                     </div>
                   </div>
 
